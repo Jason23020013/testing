@@ -1,12 +1,16 @@
 // server.js
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(cors()); // 启用 CORS
+
+// 其余代码保持不变
+
 
 app.post('/api/chat', async (req, res) => {
   const { input_text } = req.body;
