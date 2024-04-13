@@ -108,11 +108,11 @@
         }]
       };
 
-      // 发送请求到服务器（这里使用示例的URL，根据实际情况修改）
-      fetch(' https://api.openai.com/v1/chat/completions', {
+      // 发送请求到服务器
+      fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generate', {
         method: 'POST',
         headers: {
-          'Authorization': 'sk-TaNogOVTyxveAlR1qrYqBMQmNMRpLuzQ08HxRJ2gKja2YBw0', // 替换为你的实际API密钥
+          'Authorization': 'AIzaSyDL_dJzWHhT3pKT8E17N8Kb1JfaBm_IU5c', // 替换为你的Gemini API密钥
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(request)
