@@ -1,58 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gemini AI Chat</title>
-</head>
-<body>
-  <h1>Gemini AI Chat</h1>
-  <div id="chatLog"></div>
-  <input type="text" id="inputMessage" placeholder="请输入消息">
-  <button onclick="sendMessage()">发送</button>
+<html>
+  <body>
+    <!-- ... Your HTML and CSS -->
 
-  <script>
-    const chatLog = document.getElementById('chatLog');
-    const inputMessage = document.getElementById('inputMessage');
-
-    function sendMessage() {
-      const message = inputMessage.value.trim();
-
-      if (message === '') {
-        return;
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
       }
+    </script>
+    <script type="module">
+      import { GoogleGenerativeAI } from "@google/generative-ai";
 
-      addMessageToChatLog(message, 'user-message');
-      inputMessage.value = '';
+      // Fetch your API_KEY
+      const API_KEY = "AIzaSyC2kBnw20EYMqeCi6dI6xzX2qOzFegwYyo";
 
-      // 发送消息到后端进行处理
-      sendRequestToBackend(message);
-    }
+      // Access your API key (see "Set up your API key" above)
+      const genAI = new GoogleGenerativeAI(API_KEY);
 
-    function sendRequestToBackend(message) {
-      fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ input_text: message })
-      })
-      .then(response => response.json())
-      .then(data => {
-        const reply = data.response;
-        addMessageToChatLog(reply, 'ai-message');
-      })
-      .catch(error => {
-        console.error('请求后端时出错:', error);
-      });
-    }
+      // ...
 
-    function addMessageToChatLog(message, className) {
-      const messageElement = document.createElement('div');
-      messageElement.textContent = message;
-      messageElement.classList.add(className);
-      chatLog.appendChild(messageElement);
-    }
-  </script>
-</body>
+      const model = genAI.getGenerativeModel({ model: "MODEL_NAME"});
+
+      // ...
+    </script>
+  </body>
 </html>
