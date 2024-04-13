@@ -9,14 +9,15 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.post('/api/chat', async (req, res) => {
-  const { input_text, api_key } = req.body;
+  const { input_text } = req.body;
+  const apiKey = "AIzaSyDL_dJzWHhT3pKT8E17N8Kb1JfaBm_IU5c"; // 替换为你的 Gemini API 密钥
 
   try {
     const response = await fetch('https://api.geminiopenplatform.com/v1/ai/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${api_key}`
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({ input_text })
     });
