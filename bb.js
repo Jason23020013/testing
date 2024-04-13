@@ -11,7 +11,7 @@ function sendMessage() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer YOUR_API_KEY" // Replace YOUR_API_KEY with your actual API key
+            "Authorization": "sk-TaNogOVTyxveAlR1qrYqBMQmNMRpLuzQ08HxRJ2gKja2YBw0" // Replace YOUR_API_KEY with your actual API key
         },
         body: JSON.stringify({
             "prompt": userInput,
