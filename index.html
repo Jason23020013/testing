@@ -88,7 +88,7 @@
       const message = inputMessage.value.trim();
 
       if (message === '') {
-        return;
+        return; // 如果消息为空，则不执行任何操作
       }
 
       addMessageToChatLog(message, 'user-message');
@@ -112,14 +112,14 @@
       fetch('https://api.chatanywhere.com.cn/v1/chat/completions', {
         method: 'POST',
         headers: {
-        'Authorization': 'sk-TaNogOVTyxveAlR1qrYqBMQmNMRpLuzQ08HxRJ2gKja2YBw0',
+          'Authorization': 'Bearer YOUR_API_KEY', // 替换为你的实际API密钥
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(request)
       })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log(data); // 在控制台中打印服务器返回的数据以便调试
         const reply = data.choices[0].message.content;
 
         // 将服务器返回的回复添加到聊天记录中
