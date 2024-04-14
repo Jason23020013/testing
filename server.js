@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000; // Use environment variable for port or default to 3000
 
 // Replace with your actual Gemini API key
-const apiKey = 'YOUR_GEMINI_API_KEY';
+const apiKey = 'AIzaSyC2kBnw20EYMqeCi6dI6xzX2qOzFegwYyo';
 
 app.use(bodyParser.json());
 
@@ -14,7 +14,7 @@ app.post('/ask', async (req, res) => {
   const question = req.body.question;
 
   try {
-    const response = await fetch('https://ai.google/api/...', { // Replace with Gemini AI endpoint
+    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro', { // Replace with Gemini AI endpoint
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
